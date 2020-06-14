@@ -4,14 +4,19 @@ import { Global } from '@emotion/core'
 import styles from './styles'
 import { Footer } from './Footer'
 
-export type LayoutProps = {}
+export type LayoutProps = {
+  noHeader?: boolean
+}
 
-export const Layout: React.FC<LayoutProps> = ({ children }) => {
+export const Layout: React.FC<LayoutProps> = ({
+  children,
+  noHeader = false,
+}) => {
   return (
     <>
       <Global styles={styles.global} />
       <div css={styles.layout}>
-        <Header />
+        {!noHeader && <Header />}
         <div css={styles.content}>
           <main>{children}</main>
         </div>

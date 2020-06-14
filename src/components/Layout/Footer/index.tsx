@@ -10,6 +10,8 @@ export const Footer: React.FC<FooterProps> = () => {
       site {
         siteMetadata {
           baseUrl
+          githubUrl
+          sourceUrl
         }
       }
     }
@@ -19,6 +21,8 @@ export const Footer: React.FC<FooterProps> = () => {
     <footer css={styles.footer}>
       <div css={styles.inner}>
         <Link to="/">{site.siteMetadata.baseUrl}</Link>
+        <a target="_blank" href={site.siteMetadata.githubUrl}>GitHub</a>
+        <a target="_blank" href={site.siteMetadata.sourceUrl}>Source</a>
       </div>
     </footer>
   )

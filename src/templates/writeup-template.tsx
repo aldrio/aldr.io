@@ -14,7 +14,7 @@ const WriteupTemplate: React.FC<WriteupTemplateProps> = ({ data }) => {
 
   return (
     <Layout>
-      <Seo title="Home" />
+      <Seo title={markdownRemark.frontmatter.title} />
       <Article
         title={markdownRemark.frontmatter.title}
         date={new Date(markdownRemark.frontmatter.date)}

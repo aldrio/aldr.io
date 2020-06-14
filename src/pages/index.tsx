@@ -2,7 +2,10 @@ import React from 'react'
 
 import { Layout } from 'components/Layout'
 import { Seo } from 'components/Seo'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
+import { Profile } from 'components/Profile'
+import { ArticleThumbnail } from 'components/Article'
+import { Divider } from 'components/Divider'
 
 const IndexPage: React.FC<{}> = () => {
   const { allMarkdownRemark } = useStaticQuery(graphql`
@@ -11,7 +14,7 @@ const IndexPage: React.FC<{}> = () => {
         edges {
           node {
             id
-            excerpt(pruneLength: 250)
+            excerpt(pruneLength: 250, format: HTML)
             frontmatter {
               date
               slug
@@ -24,14 +27,21 @@ const IndexPage: React.FC<{}> = () => {
   `)
 
   const writeups = allMarkdownRemark.edges.map((edge: any) => (
-    <Link key={edge.node.id} to={`/${edge.node.frontmatter.slug}`}>
-      {edge.node.frontmatter.title}
-    </Link>
+    <ArticleThumbnail
+      key={edge.node.id}
+      title={edge.node.frontmatter.title}
+      date={new Date(edge.node.frontmatter.date)}
+      slug={edge.node.frontmatter.slug}
+    >
+      <div dangerouslySetInnerHTML={{ __html: edge.node.excerpt }} />
+    </ArticleThumbnail>
   ))
 
   return (
-    <Layout>
-      <Seo title="Home" />
+    <Layout noHeader>
+      <Seo />
+      <Profile />
+      <Divider label="Writeups" />
       {writeups}
     </Layout>
   )

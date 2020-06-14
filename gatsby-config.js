@@ -4,6 +4,7 @@ module.exports = {
     description: 'Brandon Aldrich.',
     baseUrl: 'aldr.io',
     githubUrl: 'https://github.com/aldrio/',
+    sourceUrl: 'https://github.com/aldrio/aldr.io'
   },
   plugins: [
     'gatsby-plugin-emotion',
@@ -36,8 +37,8 @@ module.exports = {
       options: {
         color: '#8C9D79',
         height: 3,
-        // includePaths: [],
-        // excludePaths: ['/'],
+        includePaths: [],
+        excludePaths: ['/'],
       },
     },
     {

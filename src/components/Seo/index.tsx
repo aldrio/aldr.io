@@ -6,7 +6,7 @@ export type SeoProps = {
   description?: string
   lang?: string
   meta?: any[]
-  title: string
+  title?: string
 }
 
 export const Seo: React.FC<SeoProps> = ({
@@ -36,8 +36,11 @@ export const Seo: React.FC<SeoProps> = ({
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={
+        !!title
+          ? `${title} | ${site.siteMetadata.title}`
+          : site.siteMetadata.title
+      }
       meta={[
         {
           name: `description`,
