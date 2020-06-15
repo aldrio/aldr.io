@@ -1,0 +1,37 @@
+---
+slug: "/kubernetes-personal-cloud"
+date: "2020-07-15"
+title: "Personal Bare-Metal Kubernetes Cluster"
+---
+
+Kubernetes is a container orchestrator that helps in managing modern server applications. While it is intended to be used on large scale clusters, I’ve set up a three node bare-metal cluster for my own uses and as a learning exercise. This is an outline of what services I’m hosting as part of my own personal cloud and how it’s currently working for me.
+
+## The Backbone
+
+The control plane is using k3s. I opted for k3s because it’s a lightweight kubernetes implementation that is better suited for usage on lower end hardware, allowing for a more wallet friendly usage. I opted to use only a single master node, even though it eliminates any high availability. I made this decision because it allows for the ability to scale down to just that node if the extra resources are not required. Kubernetes may seem redundant at this point, but k8s is not just high availability. It still has many other benefits.
+
+The foundational components of this cluster are Nginx, for ingresses, and Cert-Manager, for provisioning SSL certificates. These two components work together to act as a reverse proxy with SSL to all the hosted services.
+
+The cluster has a couple of databases. MariaDB and Postgresql with Pgpool-II. I set up one instance of each type of database that any application may need. These databases run on the master node and are persisted to a host path, with scheduled daily backups to offsite S3 object storage.
+
+I’ve also included a private Docker registry to host my Docker images, also backed on the same offsite S3 object storage.
+
+## Monitoring
+
+Grafana, a tool for setting up dashboards and visualizations is used for monitoring the cluster. Grafana fetches data from two built in sources: Loki, a log aggregator, and Prometheus, a metrics scraper. Prometheus scrapes any endpoint it can find for metrics. With these two sources alone I can graph nearly any metric of the cluster. These graphs are shown on dashboards and allow for visualizing the resource usage of the cluster, the overall network availability from around the globe, and tracking current server costs from a VPS provider.
+
+## Analytics
+
+When running production websites, it’s important to track errors and analytics. To track errors that users experience in their own browsers, I’ve set up Sentry. This is a great way to see what issues users may be experiencing, and after coding up a fix ensuring that the issue is gone. For analytics I use Matomo, an open source self-hosted alternative to Google Analytics.
+
+## Authentication
+
+This section of the cluster is experimental, but I like the idea of a self-hosted and dedicated authentication endpoint to use for any new project. In order to avoid reimplementing authentication for every new project Keycloak, an identity manager, has been added to the cluster. I’m looking forward to adding proxies that tie Keycloak and nginx together and make adding authentication something I don’t really have to think about.
+
+## Websites
+
+So far multiple dockerized personal and hosted freelance applications are deployed. I’ve become a big fan of the workflow of building a dockerized application and running it seamlessly on the cluster. The main thing I’ve learned is to write applications to be stateless. I had to rewrite some substantial parts of an existing API to get this right, but in the future, writing stateless applications from the start will be much more important to me.
+
+## Conclusion
+
+Setting up this kubernetes cluster, my “personal cloud” has been a great project that I’ve learned a lot from. It’s satisfying to be able to deploy new things so easily, and it’s great being able to get enterprise-level tooling for my projects without being nickel and dimed. Overall, I couldn’t be happier. I’m excited to keep building onto the cluster and excited to keep using it.
