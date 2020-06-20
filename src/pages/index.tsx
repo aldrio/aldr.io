@@ -10,7 +10,10 @@ import { Divider } from 'components/Divider'
 const IndexPage: React.FC<{}> = () => {
   const { allMarkdownRemark } = useStaticQuery(graphql`
     query IndexQuery {
-      allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+      allMarkdownRemark(
+        sort: { order: DESC, fields: [frontmatter___date] }
+        filter: { frontmatter: { listed: { ne: false } } }
+      ) {
         edges {
           node {
             id
@@ -32,6 +35,7 @@ const IndexPage: React.FC<{}> = () => {
       title={edge.node.frontmatter.title}
       date={new Date(edge.node.frontmatter.date)}
       slug={edge.node.frontmatter.slug}
+      showDay={false}
     >
       <div dangerouslySetInnerHTML={{ __html: edge.node.excerpt }} />
     </ArticleThumbnail>
