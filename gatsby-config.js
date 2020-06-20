@@ -4,7 +4,7 @@ module.exports = {
     description: 'Brandon Aldrich.',
     baseUrl: 'aldr.io',
     githubUrl: 'https://github.com/aldrio/',
-    sourceUrl: 'https://github.com/aldrio/aldr.io'
+    sourceUrl: 'https://github.com/aldrio/aldr.io',
   },
   plugins: [
     'gatsby-plugin-emotion',
@@ -50,6 +50,25 @@ module.exports = {
     },
     {
       resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 650,
+            },
+          },
+          {
+            resolve: 'gatsby-remark-external-links',
+            options: {
+              target: '_blank',
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-catch-links`,
       options: {},
     },
   ],
