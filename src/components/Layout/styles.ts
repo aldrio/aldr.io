@@ -1,9 +1,11 @@
 import { css } from '@emotion/core'
 import emotionNormalize from 'emotion-normalize'
 
+import 'typeface-karla'
+import 'typeface-lato'
+
 export default {
   global: css`
-    @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&family=Lato&display=swap');
     ${emotionNormalize}
     html,
     body,
