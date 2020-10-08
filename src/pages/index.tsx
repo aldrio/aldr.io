@@ -8,16 +8,16 @@ import { ArticleThumbnail } from 'components/Article'
 import { Divider } from 'components/Divider'
 
 const IndexPage: React.FC<{}> = () => {
-  const { allMarkdownRemark } = useStaticQuery(graphql`
+  const { allMdx } = useStaticQuery(graphql`
     query IndexQuery {
-      allMarkdownRemark(
+      allMdx(
         sort: { order: DESC, fields: [frontmatter___date] }
         filter: { frontmatter: { listed: { ne: false } } }
       ) {
         edges {
           node {
             id
-            excerpt(pruneLength: 250, format: HTML)
+            excerpt(pruneLength: 250)
             frontmatter {
               date
               slug
@@ -29,15 +29,17 @@ const IndexPage: React.FC<{}> = () => {
     }
   `)
 
-  const writeups = allMarkdownRemark.edges.map((edge: any) => (
+  const writeups = allMdx.edges.map(({ node }: any) => (
     <ArticleThumbnail
-      key={edge.node.id}
-      title={edge.node.frontmatter.title}
-      date={new Date(edge.node.frontmatter.date)}
-      slug={edge.node.frontmatter.slug}
+      key={node.id}
+      title={node.frontmatter.title}
+      date={new Date(node.frontmatter.date)}
+      slug={node.frontmatter.slug}
       showDay={false}
     >
-      <div dangerouslySetInnerHTML={{ __html: edge.node.excerpt }} />
+      <div>
+        <p>{node.excerpt}</p>
+      </div>
     </ArticleThumbnail>
   ))
 

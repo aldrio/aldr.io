@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import { Layout } from 'components/Layout'
 import { Seo } from 'components/Seo'
@@ -10,18 +11,20 @@ export type WriteupTemplateProps = {
 }
 
 const WriteupTemplate: React.FC<WriteupTemplateProps> = ({ data }) => {
-  const { markdownRemark } = data
+  const { mdx } = data
 
   return (
     <Layout>
-      <Seo title={markdownRemark.frontmatter.title} />
+      <Seo title={mdx.frontmatter.title} />
       <Article
-        title={markdownRemark.frontmatter.title}
-        date={new Date(markdownRemark.frontmatter.date)}
-        slug={markdownRemark.frontmatter.slug}
+        title={mdx.frontmatter.title}
+        date={new Date(mdx.frontmatter.date)}
+        slug={mdx.frontmatter.slug}
         showDay={false}
       >
-        <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
+        <div>
+          <MDXRenderer>{mdx.body}</MDXRenderer>
+        </div>
       </Article>
     </Layout>
   )
@@ -30,9 +33,10 @@ const WriteupTemplate: React.FC<WriteupTemplateProps> = ({ data }) => {
 export default WriteupTemplate
 
 export const pageQuery = graphql`
-  query WriteupTemplateQuery($slug: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      html
+  query WriteupTemplateQuery($id: String!) {
+    mdx(id: { eq: $id }) {
+      id
+      body
       frontmatter {
         date
         slug

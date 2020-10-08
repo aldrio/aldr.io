@@ -18,12 +18,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const result = await graphql(`
     {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 1000
-      ) {
+      allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
         edges {
           node {
+            id
             frontmatter {
               slug
             }
@@ -43,13 +41,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     './src/templates/writeup-template.tsx'
   )
 
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  result.data.allMdx.edges.forEach(({ node }) => {
     createPage({
       path: node.frontmatter.slug,
       component: WriteupTemplate,
       context: {
-        // additional data can be passed via context
-        slug: node.frontmatter.slug,
+        id: node.id,
       },
     })
   })
