@@ -15,6 +15,7 @@ export default {
       background: #fff;
       min-height: 100vh;
       font-family: Lato, Helvetica, Arial, sans-serif;
+      font-size: 20px;
       line-height: 1.5rem;
       color: #333;
     }
@@ -44,7 +45,7 @@ export default {
 
   content: css({
     margin: '0 auto',
-    maxWidth: 650,
+    maxWidth: '40rem',
     padding: '0 1.0875rem 1.45rem',
   }),
 }

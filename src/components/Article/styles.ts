@@ -9,7 +9,7 @@ export default {
     '& blockquote': {
       marginLeft: 0,
       paddingLeft: 40,
-      borderLeft: '4px solid #8C9D79'
+      borderLeft: '4px solid #8C9D79',
     },
   }),
 

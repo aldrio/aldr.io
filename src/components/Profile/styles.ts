@@ -37,12 +37,12 @@ export default {
   }),
 
   socialLink: css({
-    width: 32,
-    height: 32,
+    width: '2rem',
+    height: '2rem',
 
     '& > img': {
-      width: 32,
-      height: 32,
+      width: '2rem',
+      height: '2rem',
       transition: 'opacity 0.3s ease, transform 0.3s ease',
       opacity: 0.7,
       transform: 'scale(1.0)',

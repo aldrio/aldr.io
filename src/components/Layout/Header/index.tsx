@@ -32,7 +32,6 @@ export const Header: React.FC<HeaderProps> = () => {
   return (
     <header css={styles.header}>
       <div css={styles.inner}>
-        {/* <h1 css={styles.title}> */}
         <Link
           to="/"
           css={styles.brandLink}
@@ -43,13 +42,6 @@ export const Header: React.FC<HeaderProps> = () => {
           </div>
           <span className="title">{site.siteMetadata.title}</span>
         </Link>
-        {/* <Link to="/" css={styles.brandLink}>
-            <div id="hoverthing"></div>
-            <span className="title">
-              {site.siteMetadata.title}
-            </span>
-          </Link> */}
-        {/* </h1> */}
       </div>
     </header>
   )

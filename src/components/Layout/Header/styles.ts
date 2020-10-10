@@ -21,7 +21,6 @@ export default {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-
   }),
 
   brandLink: css({
@@ -52,7 +51,7 @@ export default {
       '& > img': {
         width: 32,
         height: 32,
-      }
+      },
     },
     '&:hover > .logo': {
       transition: 'opacity 0.3s ease 0.2s',
@@ -69,7 +68,7 @@ export default {
       fontSize: '1.1rem',
       whiteSpace: 'nowrap',
       color: '#333',
-      
+
       transition: 'left 0.3s ease 0.2s',
       left: 0,
     },
