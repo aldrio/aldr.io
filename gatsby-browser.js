@@ -4,4 +4,18 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-// You can delete this file if you're not using it
+exports.shouldUpdateScroll = ({
+  routerProps: { location },
+  getSavedScrollPosition,
+  prevRouterProps: { location: prevLocation },
+}) => {
+  const pos = getSavedScrollPosition(location) || [0, 0]
+
+  if (location.pathname !== prevLocation.pathname) {
+    global.___prepareScroll && global.___prepareScroll(...pos)
+  }
+
+  window.scrollTo(...pos)
+
+  return false
+}

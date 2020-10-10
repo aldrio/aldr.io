@@ -32,6 +32,7 @@ export default {
     },
 
     '& .title': {
+      position: 'relative',
       marginTop: '0.9rem',
       fontSize: '3rem',
       lineHeight: '3.2rem',

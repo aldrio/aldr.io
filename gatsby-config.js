@@ -55,7 +55,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 650,
+              maxWidth: 1000,
               quality: 70,
               disableBgImageOnAlpha: true,
             },
@@ -72,6 +72,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-catch-links`,
       options: {},
+    },
+    {
+      resolve: 'gatsby-plugin-layout',
+      options: {
+        component: require.resolve(`./src/components/Root/index.tsx`),
+      },
     },
   ],
 }

@@ -2,8 +2,8 @@ import { css } from '@emotion/core'
 
 export default {
   profile: css({
-    marginTop: '10vh',
-    marginBottom: '3.5rem',
+    paddingTop: '10vh',
+    paddingBottom: '3.5rem',
   }),
 
   link: css({
