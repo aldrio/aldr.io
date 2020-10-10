@@ -18,6 +18,15 @@ export default {
       font-size: 20px;
       line-height: 1.5rem;
       color: #333;
+      overflow-x: hidden;
+    }
+
+    @media only screen and (max-width: 600px) {
+      html,
+      body,
+      #___gatsby {
+        font-size: 18px;
+      }
     }
 
     h1 {

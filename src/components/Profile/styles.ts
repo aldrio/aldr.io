@@ -23,6 +23,12 @@ export default {
       textAlign: 'center',
       marginBottom: '1.6rem',
     },
+    '@media only screen and (max-width: 600px)': {
+      '& > h1': {
+        fontSize: '4.0rem',
+        lineHeight: '4.0rem',
+      },
+    },
   }),
 
   links: css({
