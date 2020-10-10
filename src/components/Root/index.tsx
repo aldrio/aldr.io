@@ -1,48 +1,46 @@
-import React from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
-import { graphql, useStaticQuery } from 'gatsby'
 import styles from './styles'
 import { useLocation } from '@reach/router'
-
-export { FADE_OVERLAY_Z_INDEX } from './styles'
+import { PAGE_TRANSITION_TIME } from 'utils/page-transition'
+import { css, Global } from '@emotion/core'
 
 export type RootProps = {}
 
 export const Root: React.FC<RootProps> = ({ children }) => {
   const location = useLocation()
-  const {
-    site: {
-      siteMetadata: { pageTransitionMs },
-    },
-  } = useStaticQuery(graphql`
-    query RootQuery {
-      site {
-        siteMetadata {
-          pageTransitionMs
-        }
-      }
+
+  // Keep track of previous path to give to custom animations
+  const lastPathnameRef = useRef<string | null>()
+  useEffect(() => {
+    lastPathnameRef.current = location.pathname
+  }, [location.pathname])
+
+  // Reposition the page in the window before scrolling so that animations don't appear to jump
+  const onPageRef = useCallback((page: HTMLDivElement | null) => {
+    if (!page) {
+      return
     }
-  `)
+
+    // Hack to get future scroll position from gatsby-browser.js
+    ;(global as any).___prepareScroll = (x: number, y: number) => {
+      // "Unscroll" the current page based on scroll diff
+      const dx = window.scrollX - x
+      const dy = window.scrollY - y
+
+      page.style.top = `${-dy}px`
+      page.style.left = `${-dx}px`
+    }
+  }, [])
 
   return (
-    <AnimateSharedLayout>
-      <AnimatePresence exitBeforeEnter>
-        <div key={location.pathname} css={styles.pageWrapper}>
-          <motion.div
-            css={styles.fadeOverlay}
-            initial={{ opacity: 1 }}
-            animate={{
-              opacity: 0,
-              transition: {
-                duration: pageTransitionMs / 1000,
-                delay: pageTransitionMs / 1000,
-              },
-            }}
-            exit={{
-              opacity: 1,
-              transition: { duration: pageTransitionMs / 1000 },
-            }}
-          />
+    <AnimateSharedLayout _dependency={location.pathname}>
+      <AnimatePresence
+        exitBeforeEnter
+        custom={[location.pathname, lastPathnameRef.current]}
+      >
+        <div key={location.pathname} css={styles.pageWrapper} ref={onPageRef}>
+          <FadeOverlay />
           {children}
         </div>
       </AnimatePresence>
@@ -51,3 +49,38 @@ export const Root: React.FC<RootProps> = ({ children }) => {
 }
 
 export default Root
+
+const FadeOverlay = () => {
+  return (
+    <>
+      {/* Prevent overlay hiding page if js is disabled by hiding it in noscript */}
+      <noscript>
+        <Global
+          styles={css`
+            .fade-overlay {
+              display: none;
+            }
+          `}
+        />
+      </noscript>
+      <motion.div
+        className="fade-overlay"
+        css={styles.fadeOverlay}
+        initial={{
+          opacity: 1,
+        }}
+        animate={{
+          opacity: 0,
+          transition: {
+            duration: PAGE_TRANSITION_TIME,
+            delay: PAGE_TRANSITION_TIME,
+          },
+        }}
+        exit={{
+          opacity: 1,
+          transition: { duration: PAGE_TRANSITION_TIME },
+        }}
+      />
+    </>
+  )
+}

@@ -5,7 +5,6 @@ module.exports = {
     baseUrl: 'aldr.io',
     githubUrl: 'https://github.com/aldrio/',
     sourceUrl: 'https://github.com/aldrio/aldr.io',
-    pageTransitionMs: 150,
   },
   plugins: [
     'gatsby-plugin-emotion',

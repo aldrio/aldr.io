@@ -1,6 +1,5 @@
 import { css } from '@emotion/core'
-
-export const FADE_OVERLAY_Z_INDEX = 100
+import { PAGE_TRANSITION_Z_INDEX } from 'utils/page-transition'
 
 export default {
   pageWrapper: css({
@@ -9,13 +8,13 @@ export default {
 
   fadeOverlay: css({
     backgroundColor: '#fff',
-    position: 'absolute',
+    position: 'fixed',
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
     opacity: 0,
-    zIndex: FADE_OVERLAY_Z_INDEX,
+    zIndex: PAGE_TRANSITION_Z_INDEX,
     pointerEvents: 'none',
   }),
 }
