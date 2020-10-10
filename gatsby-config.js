@@ -5,6 +5,7 @@ module.exports = {
     baseUrl: 'aldr.io',
     githubUrl: 'https://github.com/aldrio/',
     sourceUrl: 'https://github.com/aldrio/aldr.io',
+    pageTransitionMs: 150,
   },
   plugins: [
     'gatsby-plugin-emotion',
@@ -55,7 +56,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 650,
+              maxWidth: 1000,
               quality: 70,
               disableBgImageOnAlpha: true,
             },
@@ -72,6 +73,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-catch-links`,
       options: {},
+    },
+    {
+      resolve: 'gatsby-plugin-layout',
+      options: {
+        component: require.resolve(`./src/components/Root/index.tsx`),
+      },
     },
   ],
 }

@@ -19,6 +19,10 @@ export default {
       color: #333;
     }
 
+    body {
+      border-top: 4px solid #8C9D79;
+    }
+
     h1 {
       font-family: Karla, Helvetica, Arial, sans-serif;
     }
@@ -36,7 +40,6 @@ export default {
 
   layout: css({
     minHeight: '100vh',
-    borderTop: '4px solid #8C9D79',
   }),
 
   content: css({
