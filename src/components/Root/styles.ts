@@ -34,8 +34,7 @@ export default {
     }
 
     * {
-      transition: color 1s;
-      transition: background-color 1s;
+      transition: color 0.5s, background-color 0.5s, border-color 0.5s;
     }
 
     html,

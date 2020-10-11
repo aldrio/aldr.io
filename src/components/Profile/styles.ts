@@ -50,16 +50,18 @@ export default {
     width: '2rem',
     height: '2rem',
 
-    '& > img': {
+    '& > svg': {
       width: '2rem',
       height: '2rem',
-      transition: 'opacity 0.3s ease, transform 0.3s ease',
-      opacity: 0.7,
+      transition: 'fill 0.3s ease, transform 0.3s ease',
       transform: 'scale(1.0)',
+      opacity: 0.85,
+      fill: 'var(--theme-colors-text)',
     },
-    '&:hover > img': {
+    '&:hover > svg': {
       opacity: 1.0,
       transform: 'scale(1.05)',
+      fill: 'var(--theme-colors-text-dark)',
     },
   }),
 }

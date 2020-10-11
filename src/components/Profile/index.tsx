@@ -1,6 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import styles from './styles'
+import GitHub from './icons/GitHub'
 
 export type ProfileProps = {}
 
@@ -29,7 +30,7 @@ export const Profile: React.FC<ProfileProps> = ({}) => {
           target="_blank"
           css={styles.socialLink}
         >
-          <img src={require('./icons/GitHub.svg')} />
+          <GitHub />
         </a>
       </div>
     </div>
