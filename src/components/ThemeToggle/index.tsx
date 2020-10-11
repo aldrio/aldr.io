@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles'
 
 export type ThemeToggleProps = {}
@@ -26,7 +26,17 @@ const getToggledTheme = (theme: Theme): Theme => {
 }
 
 export const ThemeToggle: React.FC<ThemeToggleProps> = ({}) => {
+  const [hasMounted, setHasMounted] = useState(false)
+  useEffect(() => {
+    setHasMounted(true)
+  }, [])
+
   const [theme, setTheme] = useState(loadTheme())
+
+  // Only render after rehydrate to avoid stale info in ssr
+  if (!hasMounted) {
+    return null
+  }
 
   const toggle = () => {
     const toggledTheme = getToggledTheme(theme)
