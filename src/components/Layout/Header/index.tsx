@@ -3,9 +3,11 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 import styles from './styles'
 import { ThemeToggle } from 'components/ThemeToggle'
 
-export type HeaderProps = {}
+export type HeaderProps = {
+  minimal?: boolean
+}
 
-export const Header: React.FC<HeaderProps> = () => {
+export const Header: React.FC<HeaderProps> = ({ minimal = false }) => {
   const { site } = useStaticQuery(graphql`
     query HeaderQuery {
       site {
@@ -31,18 +33,22 @@ export const Header: React.FC<HeaderProps> = () => {
   const [emojiIndex, setEmojiIndex] = useState(0)
 
   return (
-    <header css={styles.header}>
+    <header css={[styles.header, minimal && styles.minimalHeader]}>
       <div css={styles.inner}>
-        <Link
-          to="/"
-          css={styles.brandLink}
-          onMouseEnter={() => setEmojiIndex(emojiIndex + 1)}
-        >
-          <div className="logo">
-            <img src={emojis[emojiIndex % emojis.length]} alt="Logo" />
-          </div>
-          <span className="title">{site.siteMetadata.title}</span>
-        </Link>
+        {!minimal ? (
+          <Link
+            to="/"
+            css={styles.brandLink}
+            onMouseEnter={() => setEmojiIndex(emojiIndex + 1)}
+          >
+            <div className="logo">
+              <img src={emojis[emojiIndex % emojis.length]} alt="Logo" />
+            </div>
+            <span className="title">{site.siteMetadata.title}</span>
+          </Link>
+        ) : (
+          <div />
+        )}
         <ThemeToggle />
       </div>
     </header>

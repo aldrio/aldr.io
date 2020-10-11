@@ -6,6 +6,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { Profile } from 'components/Profile'
 import { ArticleThumbnail } from 'components/Article'
 import { Divider } from 'components/Divider'
+import { Header } from 'components/Layout/Header'
 
 const IndexPage: React.FC<{}> = () => {
   const { allMdx } = useStaticQuery(graphql`
@@ -44,12 +45,15 @@ const IndexPage: React.FC<{}> = () => {
   ))
 
   return (
-    <Layout noHeader>
-      <Seo />
-      <Profile />
-      <Divider label="Writeups" />
-      {writeups}
-    </Layout>
+    <>
+      <Header minimal />
+      <Layout noHeader>
+        <Seo />
+        <Profile />
+        <Divider label="Writeups" />
+        {writeups}
+      </Layout>
+    </>
   )
 }
 

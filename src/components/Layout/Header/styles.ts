@@ -16,6 +16,15 @@ export default {
     },
   }),
 
+  minimalHeader: css({
+    paddingTop: '0.8rem',
+    paddingBottom: '0.8rem',
+    marginBottom: 0,
+    '@media only screen and (max-width: 722px)': {
+      marginBottom: 0,
+    },
+  }),
+
   inner: css({
     display: 'flex',
     flexDirection: 'row',

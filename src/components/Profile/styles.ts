@@ -24,6 +24,7 @@ export default {
       fontSize: '5.0rem',
       lineHeight: '5.0rem',
       textAlign: 'center',
+      marginTop: '1.6rem',
       marginBottom: '1.6rem',
     },
     '@media only screen and (max-width: 600px)': {
