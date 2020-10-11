@@ -34,17 +34,20 @@ export const Root: React.FC<RootProps> = ({ children }) => {
   }, [])
 
   return (
-    <AnimateSharedLayout _dependency={location.pathname}>
-      <AnimatePresence
-        exitBeforeEnter
-        custom={[location.pathname, lastPathnameRef.current]}
-      >
-        <div key={location.pathname} css={styles.pageWrapper} ref={onPageRef}>
-          <FadeOverlay />
-          {children}
-        </div>
-      </AnimatePresence>
-    </AnimateSharedLayout>
+    <>
+      <Global styles={styles.global} />
+      <AnimateSharedLayout _dependency={location.pathname}>
+        <AnimatePresence
+          exitBeforeEnter
+          custom={[location.pathname, lastPathnameRef.current]}
+        >
+          <div key={location.pathname} css={styles.pageWrapper} ref={onPageRef}>
+            <FadeOverlay />
+            {children}
+          </div>
+        </AnimatePresence>
+      </AnimateSharedLayout>
+    </>
   )
 }
 

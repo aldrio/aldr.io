@@ -67,7 +67,7 @@ export default {
       fontWeight: 'bold',
       fontSize: '1.1rem',
       whiteSpace: 'nowrap',
-      color: '#333',
+      color: 'var(--theme-colors-text)',
 
       transition: 'left 0.3s ease 0.2s',
       left: 0,

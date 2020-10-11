@@ -12,9 +12,12 @@ export default {
     alignItems: 'center',
 
     textDecoration: 'none',
-    color: '#333',
+    color: 'var(--theme-colors-text)',
+    '.dark-theme &': {
+      color: '#ececec',
+    },
     '&:hover': {
-      color: '#000',
+      color: 'var(--theme-colors-text-dark)',
     },
 
     '& > h1': {

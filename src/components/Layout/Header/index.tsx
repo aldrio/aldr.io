@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import styles from './styles'
+import { ThemeToggle } from 'components/ThemeToggle'
 
 export type HeaderProps = {}
 
@@ -42,6 +43,7 @@ export const Header: React.FC<HeaderProps> = () => {
           </div>
           <span className="title">{site.siteMetadata.title}</span>
         </Link>
+        <ThemeToggle />
       </div>
     </header>
   )

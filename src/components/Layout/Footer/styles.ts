@@ -3,8 +3,11 @@ import { css } from '@emotion/core'
 export default {
   footer: css({
     marginTop: '5.0rem',
-    borderTop: '1px solid #ddd',
     padding: '0.6rem 2.0rem',
+    borderTop: '1px solid #ddd',
+    '.dark-theme &': {
+      borderTop: '1px solid #666',
+    },
   }),
 
   inner: css({
@@ -18,11 +21,11 @@ export default {
       marginRight: 8,
     },
     '& > a': {
-      color: '#aaa',
+      color: 'var(--theme-colors-text-lightest)',
       textDecoration: 'none',
     },
     '& > a:hover': {
-      color: '#000',
+      color: 'var(--theme-colors-text-dark)',
       textDecoration: 'none',
     },
   }),

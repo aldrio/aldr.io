@@ -9,7 +9,7 @@ export default {
     '& blockquote': {
       marginLeft: 0,
       paddingLeft: 40,
-      borderLeft: '4px solid #8C9D79',
+      borderLeft: '4px solid var(--theme-colors-primary)',
     },
   }),
 
@@ -17,18 +17,18 @@ export default {
     textDecoration: 'none',
 
     transition: 'color 0.3s ease',
-    color: '#333',
+    color: 'var(--theme-colors-text)',
     '.thumbnail:hover &, &:hover': {
-      color: '#000',
+      color: 'var(--theme-colors-text-dark)',
     },
 
     '& > .date': {
-      color: '#888',
+      color: 'var(--theme-colors-text-light)',
       fontWeight: 'bold',
       transition: 'color 0.3s ease',
     },
     '.thumbnail:hover & > .date, &:hover > .date': {
-      color: '#333',
+      color: 'var(--theme-colors-text)',
     },
 
     '& .title': {
@@ -44,9 +44,9 @@ export default {
     textDecoration: 'none',
     marginBottom: '3.5rem',
 
-    color: '#333',
+    color: 'var(--theme-colors-text)',
     '&:hover': {
-      color: '#000',
+      color: 'var(--theme-colors-text-dark)',
     },
   }),
 
@@ -56,9 +56,9 @@ export default {
     fontSize: '0.8rem',
 
     transition: 'color 0.3s ease, transform 0.3s ease',
-    color: '#888',
+    color: 'var(--theme-colors-text-light)',
     '.thumbnail:hover &': {
-      color: '#333',
+      color: 'var(--theme-colors-text)',
       transform: 'scale(1.02)',
     },
   }),

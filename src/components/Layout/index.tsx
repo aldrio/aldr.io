@@ -13,15 +13,12 @@ export const Layout: React.FC<LayoutProps> = ({
   noHeader = false,
 }) => {
   return (
-    <>
-      <Global styles={styles.global} />
-      <div css={styles.layout}>
-        {!noHeader && <Header />}
-        <div css={styles.content}>
-          <main>{children}</main>
-        </div>
-        <Footer />
+    <div css={styles.layout}>
+      {!noHeader && <Header />}
+      <div css={styles.content}>
+        <main>{children}</main>
       </div>
-    </>
+      <Footer />
+    </div>
   )
 }

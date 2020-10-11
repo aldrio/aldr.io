@@ -12,10 +12,13 @@ export default {
   line: css({
     flexGrow: 1,
     borderTop: '1px solid #ccc',
+    '.dark-theme &': {
+      borderTop: '1px solid #555',
+    },
   }),
 
   label: css({
-    color: '#888',
+    color: 'var(--theme-colors-text-light)',
     marginLeft: 16,
     marginRight: 16,
   }),
