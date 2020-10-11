@@ -6,14 +6,19 @@ export type ThemeToggleProps = {}
 type Theme = 'light-theme' | 'dark-theme'
 
 const loadTheme = (): Theme => {
-  return (localStorage.getItem('preferredTheme') || 'light-theme') as Theme
+  if (typeof window !== 'undefined') {
+    return (localStorage.getItem('preferredTheme') || 'light-theme') as Theme
+  }
+  return 'light-theme'
 }
 
 const saveTheme = (theme: Theme) => {
   document.body.classList.remove('light-theme', 'dark-theme')
   document.body.classList.add(theme)
 
-  localStorage.setItem('preferredTheme', theme)
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('preferredTheme', theme)
+  }
 }
 
 const getToggledTheme = (theme: Theme): Theme => {

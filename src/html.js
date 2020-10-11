@@ -20,6 +20,9 @@ export default function HTML(props) {
           dangerouslySetInnerHTML={{
             __html: `(function () {
               try {
+                if (typeof window === 'undefined') {
+                  return
+                }
                 var preferredTheme = localStorage.getItem('preferredTheme');
                 if (!preferredTheme) {
                   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
