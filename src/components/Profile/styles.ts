@@ -4,6 +4,34 @@ export default {
   profile: css({
     paddingTop: '10vh',
     paddingBottom: '3.5rem',
+
+    '& h1': {
+      fontSize: '5.0rem',
+      lineHeight: '5.0rem',
+      textAlign: 'center',
+      marginTop: '1.6rem',
+      marginBottom: '0rem',
+    },
+    '& h2': {
+      width: '80%',
+      marginRight: 'auto',
+      marginLeft: 'auto',
+      fontSize: '2.0rem',
+      lineHeight: '2.0rem',
+      textAlign: 'center',
+      marginTop: '1.0rem',
+      color: 'var(--theme-colors-text-light)',
+    },
+    '@media only screen and (max-width: 600px)': {
+      '& h1': {
+        fontSize: '4.0rem',
+        lineHeight: '4.0rem',
+      },
+      '& h2': {
+        fontSize: '1.5rem',
+        lineHeight: '1.5rem',
+      },
+    },
   }),
 
   link: css({
@@ -18,20 +46,6 @@ export default {
     },
     '&:hover': {
       color: 'var(--theme-colors-text-dark)',
-    },
-
-    '& > h1': {
-      fontSize: '5.0rem',
-      lineHeight: '5.0rem',
-      textAlign: 'center',
-      marginTop: '1.6rem',
-      marginBottom: '1.6rem',
-    },
-    '@media only screen and (max-width: 600px)': {
-      '& > h1': {
-        fontSize: '4.0rem',
-        lineHeight: '4.0rem',
-      },
     },
   }),
 

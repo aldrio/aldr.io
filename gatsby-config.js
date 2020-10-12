@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'Brandon Aldrich',
+    subtitle: 'Full stack developer with an interest in devops',
     description: 'Brandon Aldrich.',
     baseUrl: 'aldr.io',
     githubUrl: 'https://github.com/aldrio/',

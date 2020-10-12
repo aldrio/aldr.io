@@ -33,9 +33,9 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({}) => {
 
   const [theme, setTheme] = useState(loadTheme())
 
-  // Only render after rehydrate to avoid stale info in ssr
+  // Render dummy button until after rehydrate to avoid stale info in ssr
   if (!hasMounted) {
-    return null
+    return <button css={styles.toggle} />
   }
 
   const toggle = () => {

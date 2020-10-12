@@ -12,6 +12,7 @@ export const Profile: React.FC<ProfileProps> = ({}) => {
         site {
           siteMetadata {
             title
+            subtitle
             githubUrl
           }
         }
@@ -24,6 +25,7 @@ export const Profile: React.FC<ProfileProps> = ({}) => {
       <Link to="/" css={styles.link}>
         <h1>{site.siteMetadata.title}</h1>
       </Link>
+      <h2>{site.siteMetadata.subtitle}</h2>
       <div css={styles.links}>
         <a
           href={site.siteMetadata.githubUrl}
