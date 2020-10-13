@@ -3,26 +3,30 @@ import { css } from '@emotion/core'
 export default {
   techStack: css({
     position: 'relative',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
+    display: 'block',
     flexWrap: 'wrap',
-    marginTop: '3.5rem',
+  }),
 
-    marginRight: '-1.0rem',
-    marginLeft: '-1.0rem',
+  tech: css({
+    display: 'inline-block',
+    margin: '0.125rem',
+    paddingLeft: '0.25rem',
+    paddingRight: '0.25rem',
+    fontSize: '0.7rem',
+    fontWeight: 'bold',
+    backgroundColor: '#C6F6D5',
+    borderRadius: '0.2rem',
+    alignItems: 'center',
+    color: '#22543D',
+    '& path': {
+      fill: '#22543D',
+    },
   }),
 
   logo: css({
-    marginBottom: '1.5rem',
-    height: '3rem',
-    opacity: 0.7,
+    height: '0.7rem',
     width: 'auto',
-    marginLeft: '1.0rem',
-    marginRight: '1.0rem',
-    '&, path': {
-      fill: 'var(--theme-colors-text-lightest)',
-    },
+    marginRight: '0.25rem',
+    opacity: 0.7,
   }),
 }
