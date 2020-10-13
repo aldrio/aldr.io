@@ -52,14 +52,56 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   })
 }
 
-exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
+exports.createSchemaCustomization = ({
+  actions: { createFieldExtension, createTypes },
+  createContentDigest,
+}) => {
+  // snippet from gatsby-plugin-mdx-frontmatter
+  createFieldExtension({
+    name: 'mdx',
+    extend() {
+      return {
+        type: 'String',
+        resolve(source, args, context, info) {
+          // Grab field
+          const value = source[info.fieldName]
+          if (!value) {
+            return null
+          }
+          // Isolate MDX
+          const mdxType = info.schema.getType('Mdx')
+          // Grab just the body contents of what MDX generates
+          const { resolve } = mdxType.getFields().body
+
+          return resolve(
+            {
+              rawBody: value,
+              internal: {
+                contentDigest: createContentDigest(value), // Used for caching
+              },
+            },
+            args,
+            context,
+            info
+          )
+        },
+      }
+    },
+  })
+
   createTypes(`
     type Mdx implements Node {
       frontmatter: MdxFrontmatter
     }
 
     type MdxFrontmatter {
+      slug: String!
+      date: String!
+      title: String!
+      listed: Boolean
       blurb: String @mdx
+      techs: [String!]
+      media: File
     }
   `)
 }
