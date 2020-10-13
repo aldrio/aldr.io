@@ -11,6 +11,22 @@ export default {
       paddingLeft: 40,
       borderLeft: '4px solid var(--theme-colors-primary)',
     },
+
+    '& .title': {
+      marginBottom: '0.33em',
+      display: 'inline-block',
+      position: 'relative',
+      marginTop: '0.9rem',
+      fontSize: '3rem',
+      lineHeight: '3.2rem',
+    },
+
+    '@media only screen and (min-width: 40rem)': {
+      '&.small .title': {
+        fontSize: '2rem',
+        lineHeight: '2.1333rem',
+      },
+    },
   }),
 
   header: css({
@@ -30,13 +46,6 @@ export default {
     '.thumbnail:hover & > .date, &:hover > .date': {
       color: 'var(--theme-colors-text)',
     },
-
-    '& .title': {
-      position: 'relative',
-      marginTop: '0.9rem',
-      fontSize: '3rem',
-      lineHeight: '3.2rem',
-    },
   }),
 
   thumbnail: css({
@@ -47,6 +56,26 @@ export default {
     color: 'var(--theme-colors-text)',
     '&:hover': {
       color: 'var(--theme-colors-text-dark)',
+    },
+  }),
+
+  splitThumbnail: css({
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gap: '1.0rem',
+    gridAutoFlow: 'dense',
+    '& .media': {
+      alignSelf: 'center',
+    },
+
+    '@media only screen and (min-width: 40rem)': {
+      gridTemplateColumns: '1fr 1fr',
+      '&.alternate :first-child': {
+        gridColumn: 2,
+      },
+      '&.alternate :last-child': {
+        gridColumn: 2,
+      },
     },
   }),
 

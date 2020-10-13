@@ -21,6 +21,7 @@ const WriteupTemplate: React.FC<WriteupTemplateProps> = ({ data }) => {
         date={new Date(mdx.frontmatter.date)}
         slug={mdx.frontmatter.slug}
         showDay={false}
+        techs={mdx.frontmatter.techs}
       >
         <div>
           <MDXRenderer>{mdx.body}</MDXRenderer>
@@ -41,6 +42,7 @@ export const pageQuery = graphql`
         date
         slug
         title
+        techs
       }
     }
   }

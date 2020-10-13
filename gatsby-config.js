@@ -71,6 +71,9 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-mdx-frontmatter',
+    },
+    {
       resolve: `gatsby-plugin-catch-links`,
       options: {},
     },

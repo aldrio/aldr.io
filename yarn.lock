@@ -7951,6 +7951,11 @@ gatsby-plugin-manifest@^2.4.9:
     semver "^5.7.1"
     sharp "^0.25.1"
 
+gatsby-plugin-mdx-frontmatter@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-mdx-frontmatter/-/gatsby-plugin-mdx-frontmatter-0.0.2.tgz#5db9d83bc356b2fcd3b360314f79bbf6a2bbb57a"
+  integrity sha512-nGDVNP7gLRnwyRP3rvt27R327GpeY3Ve3OVjiCmrdgkg6ApWCDMlY1XFfuY4iZDJwZXiuhmqrRZUPY5rV5xPJQ==
+
 gatsby-plugin-mdx@^1.2.46:
   version "1.2.46"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-mdx/-/gatsby-plugin-mdx-1.2.46.tgz#01b30e44e6b0fafa5461b04c20a58966a1d57188"
