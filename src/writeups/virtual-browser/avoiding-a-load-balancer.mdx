@@ -7,7 +7,6 @@ listed: false
 
 > Part of the [Virtual Browser Project](/virtual-browser)
 
-
 For the virtual browser project I decided to avoid using a load balancer for the dynamic interface servers. I did this to keep my costs as low as possible, because it seemed complicated, and also because once I started thinking about it I thought it’d be interesting to do. [Source code](https://github.com/aldrio/passthrough-dns).
 
 The problem with skipping a load balancer is that when using https, you can’t create an unencrypted WebSocket to a random IP. Browsers don’t like this. I don’t want to generate SSL certs on the fly, and I’d also have to add a DNS record for each new interface and it's another point of failure to set up error handling for in case the provision doesn’t go through correctly. So somehow we have to get a valid SSL certificate knowing only the IP address.

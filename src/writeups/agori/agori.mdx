@@ -2,15 +2,24 @@
 slug: '/agori'
 date: '2020-10-07'
 title: 'Agori'
----
+media: './feature.png'
+techs:
+  - TypeScript
+  - React.js
+  - GraphQL
+  - PostgreSQL
+  - Docker
+  - Kubernetes
+blurb: |
+  Agori is an interest based friendship app.
 
-import { TechStack } from 'components/TechStack'
+  Users can subscribe to interests that allow them to find and chat
+  with other people they may get along with.
+---
 
 Agori is an interest based friendship app.
 
-Users can subscribe to interests that allow them to find and chat
-with other people they may get along with. Users can create avatars
-using an avatar custodmizer to easily express themselves.
+Users can subscribe to interests that allow them to find and chat with other people they may get along with. Users can create avatars using an avatar customizer to easily express themselves.
 
 ![Agori](./feature.png)
 
@@ -27,8 +36,6 @@ Objection.js is used as an ORM (more of a query builder) to model PostgreSQL dat
 Jest is used for testing. Hygen for generating new code.
 
 Authentication is managed externally by Keycloak. The API will dynamically create new users in the database whenever a new authenticated JWT makes its first request. This simplifies the scope of the project without sacrificing features while offloading risks to an already hardened solution.
-
-<TechStack techs={['React.js', 'GraphQL', 'TypeGraphQL', 'PostgreSQL', 'Objection.js', 'Docker', 'Kubernetes']} />
 
 ## Development
 
