@@ -68,12 +68,16 @@ export default {
       alignSelf: 'center',
     },
 
+    '& > :first-child': {
+      // Collapse margin between content and read more
+      marginBottom: '-1rem',
+    },
     '@media only screen and (min-width: 40rem)': {
       gridTemplateColumns: '1fr 1fr',
-      '&.alternate :first-child': {
+      '&.alternate > :first-child': {
         gridColumn: 2,
       },
-      '&.alternate :last-child': {
+      '&.alternate > :last-child': {
         gridColumn: 2,
       },
     },

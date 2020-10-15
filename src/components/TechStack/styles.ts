@@ -5,6 +5,8 @@ export default {
     position: 'relative',
     display: 'block',
     flexWrap: 'wrap',
+    marginTop: '1rem',
+    marginBottom: '1rem',
   }),
 
   tech: css({
