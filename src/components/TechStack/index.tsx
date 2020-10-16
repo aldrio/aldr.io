@@ -9,6 +9,7 @@ import ReactJsLogo from './logos/React.js'
 import TypeGraphQLLogo from './logos/TypeGraphQL'
 import TypeScriptLogo from './logos/TypeScript'
 import WebRTCLogo from './logos/WebRTC'
+import PythonLogo from './logos/Python'
 
 export const TechNames = [
   'Docker',
@@ -20,6 +21,7 @@ export const TechNames = [
   'TypeGraphQL',
   'TypeScript',
   'WebRTC',
+  'Python',
 ] as const
 
 export type TechName = typeof TechNames[number]
@@ -68,6 +70,11 @@ const Techs: Record<TechName, Tech> = {
     Logo: WebRTCLogo,
     lightColor: '#f5cecc',
     darkColor: '#B22722',
+  },
+  Python: {
+    Logo: PythonLogo,
+    lightColor: '#FFEFB9',
+    darkColor: '#C39A13',
   },
 }
 
