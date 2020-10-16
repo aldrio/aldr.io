@@ -14,7 +14,7 @@ const IndexPage: React.FC<{}> = () => {
   const { allMdx } = useStaticQuery(graphql`
     query IndexQuery {
       allMdx(
-        sort: { order: DESC, fields: [frontmatter___date] }
+        sort: { order: DESC, fields: [frontmatter___order] }
         filter: { frontmatter: { listed: { ne: false } } }
       ) {
         edges {
@@ -25,6 +25,7 @@ const IndexPage: React.FC<{}> = () => {
               date
               slug
               title
+              project
               media {
                 childImageSharp {
                   fluid(maxWidth: 700) {
@@ -52,6 +53,7 @@ const IndexPage: React.FC<{}> = () => {
         title={node.frontmatter.title}
         date={new Date(node.frontmatter.date)}
         showDay={false}
+        project={node.frontmatter.project}
         slug={node.frontmatter.slug}
         techs={node.frontmatter.techs}
         media={

@@ -12,6 +12,7 @@ export type ArticleProps = {
   subTitle?: string
   date?: Date
   showDay?: boolean
+  project?: boolean
   noLink?: boolean
   noAnimateBody?: boolean
   small?: boolean
@@ -24,6 +25,7 @@ export const Article: React.FC<ArticleProps> = ({
   subTitle,
   date,
   showDay = true,
+  project = false,
   noLink = false,
   noAnimateBody = false,
   small = false,
@@ -46,7 +48,9 @@ export const Article: React.FC<ArticleProps> = ({
       <Header to={`/${slug}`} css={styles.header} ref={inViewRef as any}>
         {date && (
           <span className="date">
-            {date.toLocaleDateString('en-US', dateOptions)}
+            {project
+              ? 'Project'
+              : date.toLocaleDateString('en-US', dateOptions)}
           </span>
         )}
         <div>

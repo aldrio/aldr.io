@@ -95,10 +95,12 @@ exports.createSchemaCustomization = ({
     }
 
     type MdxFrontmatter {
+      order: Int
       slug: String!
       date: String!
       title: String!
       listed: Boolean
+      project: Boolean
       blurb: String @mdx
       techs: [String!]
       media: File
