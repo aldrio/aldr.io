@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useVisibleTransition } from 'utils/page-transition'
 import { TechName, TechStack } from 'components/TechStack'
+import { LinkIcon } from 'components/Link'
 
 export type ArticleProps = {
   slug: string
@@ -17,6 +18,8 @@ export type ArticleProps = {
   noAnimateBody?: boolean
   small?: boolean
   techs?: TechName[]
+  siteUrl?: string
+  sourceUrl?: string
 }
 
 export const Article: React.FC<ArticleProps> = ({
@@ -30,6 +33,8 @@ export const Article: React.FC<ArticleProps> = ({
   noAnimateBody = false,
   small = false,
   techs,
+  siteUrl,
+  sourceUrl,
   children,
 }) => {
   const [inViewRef, inView] = useInView({ initialInView: true })
@@ -72,7 +77,21 @@ export const Article: React.FC<ArticleProps> = ({
           noAnimateBody ? undefined : { y: 0, transition: { duration: 0.5 } }
         }
       >
-        {techs ? <TechStack techs={techs} /> : null}
+        <div css={styles.metadata}>
+          {techs ? <TechStack techs={techs} /> : null}
+          <div css={styles.linkList}>
+            {siteUrl && (
+              <LinkIcon href={siteUrl} icon="site" hoverText={title} />
+            )}
+            {sourceUrl && (
+              <LinkIcon
+                href={sourceUrl}
+                icon="source-code"
+                hoverText="Source Code"
+              />
+            )}
+          </div>
+        </div>
         {children}
       </motion.div>
     </article>

@@ -95,4 +95,16 @@ export default {
       transform: 'scale(1.02)',
     },
   }),
+
+  metadata: css({
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: '-1rem',
+  }),
+
+  linkList: css({
+    display: 'flex',
+    flexDirection: 'row',
+  }),
 }

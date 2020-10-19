@@ -104,6 +104,8 @@ exports.createSchemaCustomization = ({
       blurb: String @mdx
       techs: [String!]
       media: File
+      siteUrl: String
+      sourceUrl: String
     }
   `)
 }

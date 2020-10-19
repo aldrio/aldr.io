@@ -23,6 +23,8 @@ const WriteupTemplate: React.FC<WriteupTemplateProps> = ({ data }) => {
         showDay={false}
         project={mdx.frontmatter.project}
         techs={mdx.frontmatter.techs}
+        siteUrl={mdx.frontmatter.siteUrl}
+        sourceUrl={mdx.frontmatter.sourceUrl}
       >
         <div>
           <MDXRenderer>{mdx.body}</MDXRenderer>
@@ -45,6 +47,8 @@ export const pageQuery = graphql`
         title
         project
         techs
+        siteUrl
+        sourceUrl
       }
     }
   }
