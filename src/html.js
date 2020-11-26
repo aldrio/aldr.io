@@ -29,6 +29,8 @@ export default function HTML(props) {
                     preferredTheme = 'dark-theme';
                   } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
                     preferredTheme = 'light-theme';
+                  } else {
+                    preferredTheme = 'light-theme';
                   }
                 }
                 

@@ -7,7 +7,17 @@ type Theme = 'light-theme' | 'dark-theme'
 
 const loadTheme = (): Theme => {
   if (typeof window !== 'undefined') {
-    return (localStorage.getItem('preferredTheme') || 'light-theme') as Theme
+    let preferredTheme = localStorage.getItem('preferredTheme') as Theme | null
+    if (!preferredTheme) {
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        preferredTheme = 'dark-theme'
+      } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        preferredTheme = 'light-theme'
+      } else {
+        preferredTheme = 'light-theme'
+      }
+    }
+    return preferredTheme
   }
   return 'light-theme'
 }
