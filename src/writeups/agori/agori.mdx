@@ -6,13 +6,15 @@ project: true
 title: 'Agori'
 media: './feature.png'
 sourceUrl: 'https://github.com/aldrio/agori'
+siteUrl: 'https://www.agori.app/'
 techs:
   - TypeScript
   - React.js
   - GraphQL
   - PostgreSQL
   - Docker
-  - Kubernetes
+  - GCP
+  - Nix
 blurb: |
   Agori is an interest based friendship app.
 
@@ -26,6 +28,14 @@ Users can subscribe to interests that allow them to find and chat with other peo
 
 ![Agori](./feature.png)
 
+## Avatars
+
+One of the core features to Agori is it's avatar designer. Users can pick and choose from several features, colors, and variations to create a personal avatar that is used for themselves through the app. Avatars are SVG based and use multiple SVG features to allow as much flexibility as possible. When you think about transparencies, clipping, hats, glasses, etc, there's a lot of consideration that goes into how to compose an avatar from individual parts.
+
+The asset pipeline for the avatars has several steps, using automation whereever possible. It takes assets from Adobe Illustrator, optimization, organization through Figma, a color coding process, and code generation to crossplatform SVG React components.
+
+Special attention had to go to the performance in the avatar editing area of the app. SVGs aren't as easy to use in React Native as they are on the web. Miniature displays of each avatar component in every color and variation are prerendered as appropriately sized PNG's. This helps keep the rendering overhead down.
+
 ## Tech Stack
 
 Agori tries to keep typesafe code, while still maintaining readability and scalability. It's primary language is Typescript.
@@ -38,8 +48,8 @@ Objection.js is used as an ORM (more of a query builder) to model PostgreSQL dat
 
 Jest is used for testing. Hygen for generating new code.
 
-Authentication is managed externally by Keycloak. The API will dynamically create new users in the database whenever a new authenticated JWT makes its first request. This simplifies the scope of the project without sacrificing features while offloading risks to an already hardened solution.
+## Development and Deployment
 
-## Development
+Agori's various development to production environments are managed by [Nix](https://nixos.org/). External services are hosted locally with Docker Compose during development. Agori is containerized (based on the same Nix configuration from the development environment!) and deployed on the Google Cloud Platform.
 
-The development environment is containerized and managed with Docker Compose. A single Dockerfile can target production or development images. Development images are designed to allow for mounting code to enable live reload and quick iteration. A test postgres database is used to keep testing and development as close to the production environment as possible.
+> Note: The linked code is an early open source version of Agori
