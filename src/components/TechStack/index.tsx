@@ -10,6 +10,8 @@ import TypeGraphQLLogo from './logos/TypeGraphQL'
 import TypeScriptLogo from './logos/TypeScript'
 import WebRTCLogo from './logos/WebRTC'
 import PythonLogo from './logos/Python'
+import NixLogo from './logos/Nix'
+import GcpLogo from './logos/Gcp'
 
 export const TechNames = [
   'Docker',
@@ -22,6 +24,8 @@ export const TechNames = [
   'TypeScript',
   'WebRTC',
   'Python',
+  'Nix',
+  'GCP',
 ] as const
 
 export type TechName = typeof TechNames[number]
@@ -75,6 +79,16 @@ const Techs: Record<TechName, Tech> = {
     Logo: PythonLogo,
     lightColor: '#FFEFB9',
     darkColor: '#C39A13',
+  },
+  Nix: {
+    Logo: NixLogo,
+    lightColor: '#D8E6F0',
+    darkColor: '#5277C3',
+  },
+  GCP: {
+    Logo: GcpLogo,
+    lightColor: '#FFEFC1',
+    darkColor: '#D59E00',
   },
 }
 
