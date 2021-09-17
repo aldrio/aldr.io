@@ -80,5 +80,11 @@ module.exports = {
         component: require.resolve(`./src/components/Root/index.tsx`),
       },
     },
+    {
+      resolve: `gatsby-plugin-plausible`,
+      options: {
+        domain: `aldr.io`,
+      },
+    },
   ],
 }
